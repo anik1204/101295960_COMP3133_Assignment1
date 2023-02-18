@@ -1,0 +1,30 @@
+{
+  "name": "101295960_comp3133_assignment1",
+  "version": "1.0.0",
+  "description": "Full Stack Development Assignment 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anik1204/101295960_COMP3133_Assignment1.git"
+  },
+  "author": "Abdur Rahman Fahad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anik1204/101295960_COMP3133_Assignment1/issues"
+  },
+  "homepage": "https://github.com/anik1204/101295960_COMP3133_Assignment1#readme",
+  "dependencies": {
+    "apollo-server": "^3.11.1",
+    "apollo-server-express": "^3.11.1",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "graphql": "^16.6.0",
+    "mongodb": "^5.0.1",
+    "mongoose": "^6.9.2",
+    "path": "^0.12.7"
+  }
+}
