@@ -18,6 +18,7 @@
   "homepage": "https://github.com/anik1204/101295960_COMP3133_Assignment1#readme",
   "dependencies": {
     "apollo-server": "^3.11.1",
+    "apollo-server-errors": "^3.3.1",
     "apollo-server-express": "^3.11.1",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
