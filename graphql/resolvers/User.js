@@ -40,11 +40,11 @@ module.exports = {
 				return false;
 			}
 			if (user.password != password) {
-				throw new ApolloError("Incorrect password");
+				return({message: "Incorrect password", status: 401});
 			} else {
 				console.log(user);
-
 				return {
+					status: 200,
 					id: user._id,
 					username: user.username,
 				};

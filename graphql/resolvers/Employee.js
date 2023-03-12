@@ -2,10 +2,8 @@ const Employee = require("../../models/Employee");
 
 module.exports = {
 	Mutation: {
-		async createEmployee(
-			_,
-			{ employeeInput: { first_name, last_name, email, gender, salary } }
-		) {
+		async createEmployee(_, { employeeInput: { first_name, last_name, email, gender, salary }}) 
+		{
 			let ifEmailExists = await Employee.findOne({ email }).count();
 			if (ifEmailExists == 0) {
 				const employee = new Employee();
@@ -16,7 +14,8 @@ module.exports = {
 				employee.salary = salary;
 				employee.save((err, doc) => {
 					if (!err) {
-						res.status(201).send({
+						return({
+							status: 201,
 							message:
 								"Employee Added: " +
 								first_name +
@@ -24,11 +23,12 @@ module.exports = {
 								last_name +
 								", Email: " +
 								email,
+								_id: doc._id,
 						});
-					} else res.send("Error during insertion: " + err);
+					} else return("Error during insertion: " + err);
 				});
 			} else {
-				res.status(200).send({ message: "Email already in use." });
+				return ({ message: "Email already in use.", status: 406 });
 			}
 		},
 	},
