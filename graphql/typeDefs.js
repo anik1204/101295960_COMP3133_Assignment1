@@ -7,6 +7,14 @@ const typeDefs = gql`
 		password: String
 	}
 
+	type Response {
+		status: Int!
+		message: String
+		token: String
+		id: ID
+		username: String
+	}
+
 	input RegisterInput {
 		username: String
 		email: String
@@ -33,15 +41,15 @@ const typeDefs = gql`
 	}
 
 	type Query {
-		loginUser(loginInput: LoginInput): User
+		loginUser(loginInput: LoginInput): Response
 		employee(id: ID!): Employee!
 		employees: [Employee]
 	}
 
 	type Mutation {
 		register(registerInput: RegisterInput): User
-		updateEmployee(id: ID!, employeeInput: EmployeeInput): Employee
-		deleteEmployee(id: ID!): Employee
+		editEmployee(id: ID!, employeeInput: EmployeeInput): Response
+		deleteEmployee(id: ID!): Response
 		createEmployee(employeeInput: EmployeeInput): Employee
 	}
 `;
