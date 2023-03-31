@@ -34,21 +34,31 @@ module.exports = {
 		},
 	},
 	Query: {
-		async loginUser(_, { loginInput: { username, password } }) {
-			let user = await Users.findOne({ username });
+		async loginUser(_, { loginInput: { email, password } }) {
+			let user = await Users.findOne({ email });
 			if (!user) {
-				return false;
+			  return {
+				success: false,
+				message: 'User not found',
+				status: 404,
+			  };
 			}
 			if (user.password != password) {
-				return({message: "Incorrect password", status: 401});
+			  return {
+				success: false,
+				message: 'Incorrect password',
+				status: 401,
+			  };
 			} else {
-				console.log(user);
-				return {
-					status: 200,
-					id: user._id,
-					username: user.username,
-				};
+			  console.log(user);
+			  return {
+				success: true,
+				status: 200,
+				message: 'Login successful',
+				id: user._id,
+				email: user.email,
+			  };
 			}
-		},
+		  },		  
 	},
 };

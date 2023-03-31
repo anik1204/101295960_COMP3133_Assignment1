@@ -9,6 +9,7 @@ const typeDefs = gql`
 
 	type Response {
 		status: Int!
+		success: Boolean!
 		message: String
 		token: String
 		id: ID
