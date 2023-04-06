@@ -8,7 +8,7 @@ const typeDefs = gql`
 	}
 
 	type Response {
-		status: Int!
+		status: Int
 		success: Boolean!
 		message: String
 		token: String
@@ -48,7 +48,7 @@ const typeDefs = gql`
 	}
 
 	type Mutation {
-		register(registerInput: RegisterInput): User
+		register(registerInput: RegisterInput): Response
 		editEmployee(id: ID!, employeeInput: EmployeeInput): Response
 		deleteEmployee(id: ID!): Response
 		createEmployee(employeeInput: EmployeeInput): Employee

@@ -1,4 +1,5 @@
 const Employee = require("../../models/Employee");
+const { ObjectId } = require('mongodb');
 
 module.exports = {
 	Mutation: {
@@ -35,19 +36,21 @@ module.exports = {
 		},
 		async editEmployee(
 			_,
-			{ ID, employeeInput: { first_name, last_name, email, gender, salary } }
-		) {
-			const wasEdited = await Employee.findByIdAndUpdate(ID, {
-				first_name: first_name,
-				last_name: last_name,
-				email: email,
-				gender: gender,
-				salary: salary,
+			{ id, employeeInput: { first_name, last_name, email, gender, salary } }
+		  ) {
+			const objectId = new ObjectId(id);
+			console.log(objectId);
+			const wasEdited = await Employee.findByIdAndUpdate(objectId, {
+			  first_name: first_name,
+			  last_name: last_name,
+			  email: email,
+			  gender: gender,
+			  salary: salary,
 			}).modifiedCount;
 			return wasEdited > 0
-				? { message: "Employee edited successfully.", status: 200 }
-				: { message: "Employee not found.", status: 404 };
-		},
+			  ? { message: "Employee edited successfully.", status: 200, success: true }
+			  : { message: "Employee not found.", status: 404, success: false };
+		  },		  
 		async deleteEmployee(_, { ID }) {
 			const wasDeleted = await Employee.findByIdAndDelete(ID).deletedCount;
 			return wasDeleted > 0

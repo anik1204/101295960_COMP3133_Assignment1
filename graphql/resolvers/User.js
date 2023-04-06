@@ -21,15 +21,17 @@ module.exports = {
 				user.password = password;
 				user.email = email;
 				user.save((err, doc) => {
+					//console.log(err);
 					if (!err) {
 						return {
-							id: doc._id,
-							...doc._doc,
+							success: true,
+							message: 'Signup successful',
+							status: 200,
 						};
-					} else return "Error during insertion: " + err;
+					} else return  { success: false, message: "Error during insertion: " + err };
 				});
 			} else {
-				return { message: "Username/Email already in use." };
+				return { success: false, message: "Username/Email already in use." };
 			}
 		},
 	},
