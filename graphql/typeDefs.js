@@ -51,7 +51,7 @@ const typeDefs = gql`
 		register(registerInput: RegisterInput): Response
 		editEmployee(id: ID!, employeeInput: EmployeeInput): Response
 		deleteEmployee(id: ID!): Response
-		createEmployee(employeeInput: EmployeeInput): Employee
+		createEmployee(employeeInput: EmployeeInput): Response
 	}
 `;
 
